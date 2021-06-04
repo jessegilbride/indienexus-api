@@ -30,7 +30,7 @@ const ArtistsService = {
       name: xss(artist.name),
       bio: xss(artist.bio),
       soundcloud_embed: xss(artist.soundcloud_embed),
-      tag: xss(artist.tag),
+      tags: xss(artist.tags),
       date_created: new Date(artist.date_created)
     };
   }

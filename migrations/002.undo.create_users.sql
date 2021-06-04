@@ -1,5 +1,0 @@
-ALTER TABLE artists
-  DROP COLUMN IF EXISTS user_id;
-  DROP COLUMN IF EXISTS is_artist;
-
-DROP TABLE IF EXISTS users;
