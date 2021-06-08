@@ -10,7 +10,6 @@ artistsRouter
   .get((req, res, next) => {
     ArtistsService.getAllArtists(req.app.get('db'))
       .then((artists) => {
-        // console.log(artists)
         return res.json(artists.map(ArtistsService.serializeArtist));
       })
       .catch(next);
@@ -18,18 +17,20 @@ artistsRouter
   .post(requireAuth, jsonBodyParser, (req, res, next) => {
     // const { name, bio, tags, soundcloud_embed, date_created } = req.body;
     const { name, bio, tags, soundcloud_embed } = req.body;
+    
 
-    if (!name)
+    /* if (!name)
       return res.status(400).json({
         error: `Missing '${key}' in request body`
-      });
+      }); */
 
     // const newArtist = { name, bio, tags, soundcloud_embed, date_created };
     const newArtist = { name, bio, tags, soundcloud_embed };
 
+    newArtist.user_id = req.user.id;
+
     ArtistsService.insertArtist(req.app.get('db'), newArtist)
       .then((artist) => {
-        console.log(artist);
         res.status(201).json(ArtistsService.serializeArtist(artist));
       })
       .catch(next);
