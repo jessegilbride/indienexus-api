@@ -17,12 +17,6 @@ artistsRouter
   .post(requireAuth, jsonBodyParser, (req, res, next) => {
     // const { name, bio, tags, soundcloud_embed, date_created } = req.body;
     const { name, bio, tags, soundcloud_embed } = req.body;
-    
-
-    /* if (!name)
-      return res.status(400).json({
-        error: `Missing '${key}' in request body`
-      }); */
 
     // const newArtist = { name, bio, tags, soundcloud_embed, date_created };
     const newArtist = { name, bio, tags, soundcloud_embed };
@@ -38,7 +32,7 @@ artistsRouter
 
 artistsRouter
   .route('/:artist_id')
-  // .all(requireAuth) // remove authentication for MVP ... to be reinstated on a different route (TBD)
+  // .all(requireAuth) // to be reinstated on a different route (TBD)
   .all(checkArtistExists)
   .get((req, res) => {
     res.json(ArtistsService.serializeArtist(res.artist));
@@ -54,7 +48,6 @@ artistsRouter
       .catch(next)
   });
 
-/* async/await syntax for promises */
 async function checkArtistExists(req, res, next) {
   try {
     const artist = await ArtistsService.getById(req.app.get('db'), req.params.artist_id);
