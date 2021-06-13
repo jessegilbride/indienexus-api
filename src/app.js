@@ -9,11 +9,6 @@ const usersRouter = require('./users/users-router');
 
 const app = express();
 
-/* const corsOptions = {
-  origin: 'https://indienexus-client.vercel.app/',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-} */
-
 app.use(
   morgan(NODE_ENV === 'production' ? 'tiny' : 'common', {
     skip: () => NODE_ENV === 'test'
