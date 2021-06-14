@@ -15,58 +15,49 @@ Artist profiles currently allow you to have an artist name, bio (description), a
 
 &nbsp;
 
-## Technologies used for the API
-
-* Node and Express 
-  * Authentication via JWT 
-  * RESTful API 
-* Testing 
-  * Supertest
-  * Mocha, Chai
-* Database 
-  * PostgreSQL
-  * Knex.js
-
-&nbsp;
-  
-## Production Environment
-
-Deployed on [Heroku](https://www.heroku.com/)
-
-&nbsp;
-
 ## API Endpoints
 
 ### Users Router
 
+`/api/users`
 ```
-/api/users
-
 POST  - create a new user
+```
+... new user data from the client:
+```js
+// POST body:
+[
+  {
+    full_name: String,
+    user_name: String,
+    password: String
+  }
+]
 ```
 
 &nbsp;
 
 ### Auth Router
 
+`/api/auth/login`
 ```
-/api/auth/login
 
 POST  - create auth token
 ```
+> per-session auth token resides in the browser's localStorage
 
 &nbsp;
 
 ### Artists Router
+`/api/artists`
 ```
-/api/artists
-
 GET   - get all artists
 POST  - create a new artist
 ```
 
->  A new artist contains:
+... new artist data from the client:
 ```js
+// POST body:
 [
   {
     name: String,
@@ -78,14 +69,13 @@ POST  - create a new artist
 
 &nbsp;
 
+`/api/artists/:artist_id`
 ```
-/api/artists/:artist_id
-
 GET   - get artist by id
 ```
+> note: artist_id is generated automatically by the database
 <!-- PATCH  - update an artist by id -->
 <!-- DELETE  - remove an artist by id -->
-> An artist_id is generated automatically and can be seen in the URL when visiting their page.
 
 &nbsp;
 
@@ -102,5 +92,19 @@ GET   - get all artists by tags within tag_list
 
 GET   - get all artists by search term
 ``` -->
+
+&nbsp;
+
+## Technologies used for the API
+
+* Node and Express 
+  - RESTful API 
+  - Authentication via JWT 
+* Database 
+  - PostgreSQL
+  - Knex.js
+* Testing 
+  - Supertest
+  - Mocha, Chai
 
 &nbsp;
