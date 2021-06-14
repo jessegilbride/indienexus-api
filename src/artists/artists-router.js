@@ -15,10 +15,7 @@ artistsRouter
       .catch(next);
   })
   .post(requireAuth, jsonBodyParser, (req, res, next) => {
-    // const { name, bio, tags, soundcloud_embed, date_created } = req.body;
     const { name, bio, tags, soundcloud_embed } = req.body;
-
-    // const newArtist = { name, bio, tags, soundcloud_embed, date_created };
     const newArtist = { name, bio, tags, soundcloud_embed };
 
     newArtist.user_id = req.user.id;
