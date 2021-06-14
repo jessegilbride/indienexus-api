@@ -59,6 +59,11 @@ function makeArtistsArray(users) {
   ]
 }
 
+function makeUsersFixtures() {
+  const testUsers = makeUsersArray()
+  return { testUsers }
+}
+
 function makeArtistsFixtures() {
   const testUsers = makeUsersArray()
   const testArtists = makeArtistsArray(testUsers)
@@ -124,6 +129,7 @@ module.exports = {
   makeUsersArray,
   makeArtistsArray,
   cleanTables,
+  makeUsersFixtures,
   makeArtistsFixtures,
   seedArtistsTables,
   makeAuthHeader,
