@@ -100,6 +100,7 @@ GET   - get all artists by search term
 * Node and Express 
   - RESTful API 
   - Authentication via JWT 
+  - XSS (data sanitization)
 * Database 
   - PostgreSQL
   - Knex.js
