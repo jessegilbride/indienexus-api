@@ -91,9 +91,9 @@ GET   - get all artists by tags within tag_list
 /api/artists/search/
 
 GET   - get all artists by search term
-``` -->
+```
 
-&nbsp;
+&nbsp; -->
 
 ## Technologies used for the API
 
